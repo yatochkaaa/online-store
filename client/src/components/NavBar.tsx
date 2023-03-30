@@ -9,6 +9,11 @@ const NavBar: React.FC = observer(() => {
   const { userStore } = useStores();
   const navigate = useNavigate();
 
+  const logOut = () => {
+    userStore.setUser({});
+    userStore.setIsAuth(false);
+  }
+
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -24,10 +29,7 @@ const NavBar: React.FC = observer(() => {
             <Button
               variant="outline-light"
               className="ms-2"
-              onClick={() => {
-                userStore.setIsAuth(false);
-                navigate(ROUTE.LOGIN);
-              }}
+              onClick={logOut}
             >
               Выйти
             </Button>
@@ -37,7 +39,6 @@ const NavBar: React.FC = observer(() => {
             <Button
               variant="outline-light"
               onClick={() => {
-                userStore.setIsAuth(true);
                 navigate(ROUTE.LOGIN);
               }}
             >

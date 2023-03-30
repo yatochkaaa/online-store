@@ -8,16 +8,17 @@ enum UserRole {
 export interface IUser {
   id: number;
   email: string;
-  password: string;
   role: UserRole;
+  exp: number;
+  iat: number;
 }
 
 export class UserStore {
   _isAuth: boolean;
   _user: IUser | {};
-  
+
   constructor() {
-    this._isAuth = true;
+    this._isAuth = false;
     this._user = {};
     makeAutoObservable(this);
   }
@@ -26,7 +27,7 @@ export class UserStore {
     this._isAuth = bool;
   }
 
-  setUser(user: IUser) {
+  setUser(user: IUser | {}) {
     this._user = user;
   }
 

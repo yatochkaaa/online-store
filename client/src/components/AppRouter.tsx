@@ -8,7 +8,7 @@ const AppRouter: React.FC = () => {
 
   return (
     <Routes>
-      {userStore._isAuth &&
+      {userStore.isAuth &&
         authRoutes.map(({ path, Component }) => (
           <Route key={path} path={path} element={<Component />} />
         ))}
